@@ -37,3 +37,44 @@ public class Form {
 		}
 	}
 }
+
+
+import java.util.*;
+public class Bank {
+	public static void main (String [] args) {
+		Scanner sc = new Scanner(System.in);
+		
+			System.out.println("1.Deposit \n2.Withdraw \n3.Balance \n4.Exit");
+			System.out.println("Enter a choice : ");
+			int ch = sc.nextInt();
+			int ba = 0;
+			if(ch == 1) {
+				System.out.println("Enter a amount : ");
+				int a = sc.nextInt();
+				ba += a;
+			}
+			else if(ch == 2) {
+				System.out.println("Enter a amount : ");
+				int a = sc.nextInt();
+				if(ba<=a) {
+					ba -= a;
+				}
+				else {
+					System.out.println("Invaild Balance");
+				}
+				System.out.println(ba);
+			}
+			else if(ch == 3) {
+				System.out.println(ba);
+			}
+			else if(ch == 4) {
+				System.out.println("Thank You");
+				
+			}
+			else {
+				System.out.println("Invaild choice");
+			}
+	}
+ 
+}
+
