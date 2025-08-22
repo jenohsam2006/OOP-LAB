@@ -121,63 +121,51 @@ public class Bank {
     }
 }
 
+package URK24CS1154;
 
-package OOPLAB;
+import java.util.*;
 
-import java.util.Scanner;
+public class GYM {
 
-public class Gym {
-    public static void main(String[] args) {
+    int totalPushUps = 0;
+    void pushup(String str) {
+        int pushup = Integer.parseInt(str);
+
+        if (pushup < 0) {
+            System.out.println("Push-up count can't be negative.");
+        } else {
+            totalPushUps += pushup;
+            System.out.println("Total so far: " + totalPushUps + " push-ups");
+        }
+    }
+
+    public static void main(String a[]) {
+        GYM g = new GYM();
+        System.out.println("Jenoh Sam J B \nURK24CS1154");
         Scanner sc = new Scanner(System.in);
 
-        int totalPushUps = 0;
-        String input;
-
-        System.out.println("=== Fitness App: Push-Up Tracker ===");
-        System.out.println("Enter the number of push-ups for each day.");
-        System.out.println("Type 'stop' to finish and see your total.\n");
+        String[] daysOfWeek = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+        int dayIndex = 0;    
+        int daysCompleted = 0;  
 
         while (true) {
-            System.out.print("Enter push-ups for today (or type 'stop'): ");
-            input = sc.next();
+            System.out.print(daysOfWeek[dayIndex] + " - Enter push-ups (or type 'stop'): ");
+            String str = sc.nextLine();
 
-            if (input.equals("stop")) {
+            if (str.equalsIgnoreCase("stop")) {
+                System.out.println("\nGreat job! You did a total of " + g.totalPushUps + " push-ups in " + daysCompleted + " days.");
                 break;
             }
 
-            int flag = 1;
+            g.pushup(str);
 
-            for (int i = 0; i < input.length(); i++) {
-                if (input.charAt(i) < '0' || input.charAt(i) > '9') {
-                    flag = 0;
-                    break;
-                }
-            }
-
-            if (flag == 1) {
-                int pushUps = 0;
- 
-                for (int i = 0; i < input.length(); i++) {
-                    pushUps = pushUps * 10 + (input.charAt(i) - '0');
-                }
-
-                if (pushUps < 0) {
-                    System.out.println("Push-up count can't be negative.");
-                } else {
-                    totalPushUps += pushUps;
-                    System.out.println("Total so far: " + totalPushUps + " push-ups");
-                }
-            } else {
-                System.out.println("Invalid input. Please enter a positive number or 'stop'.");
-            }
+            dayIndex = (dayIndex + 1) % daysOfWeek.length;
+            daysCompleted++; 
         }
 
-        System.out.println("\nGreat job! You did a total of " + totalPushUps + " push-ups.");
         sc.close();
     }
 }
-
-
 
 
 package OOPLAB;
